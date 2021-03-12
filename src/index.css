@@ -68,6 +68,7 @@ body {
   justify-content: space-between;
   padding: 1rem;
   z-index: 1000;
+  height: 10vh;
 }
 
 @media screen and (max-width: 400px) {
