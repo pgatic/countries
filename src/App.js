@@ -34,7 +34,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar toggleTheme={toggleTheme} />
+      <Navbar toggleTheme={toggleTheme} theme={theme} />
       <Switch>
         <Route exact path="/">
           <Home />

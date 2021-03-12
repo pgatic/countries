@@ -3,7 +3,9 @@ import Search from "../components/Search.js";
 import Filter from "../components/Filter.js";
 import CountriesList from "../components/CountriesList.js";
 
-const urlAll = "https://restcountries.eu/rest/v2/all";
+const fieldsString = "?fields=name;flag;population;region;capital;alpha3Code";
+const urlAll =
+  "https://restcountries.eu/rest/v2/all?fields=name;flag;population;region;capital;alpha3Code";
 const urlSearch = `https://restcountries.eu/rest/v2/name/`;
 const urlFilter = "https://restcountries.eu/rest/v2/region/";
 
@@ -27,26 +29,8 @@ const Home = () => {
       .then((res) => res.json())
       .then(
         (result) => {
-          const results = result.map((item) => {
-            const {
-              name,
-              flag,
-              population,
-              region,
-              capital,
-              alpha3Code,
-            } = item;
-            return {
-              name,
-              flag,
-              population,
-              region,
-              capital,
-              alpha3Code,
-            };
-          });
           setLoading(false);
-          setCountries(results);
+          setCountries(result);
         },
         (error) => {
           setLoading(false);
@@ -59,13 +43,13 @@ const Home = () => {
     if (!searchTerm) {
       fetchCountries(urlAll);
     } else {
-      fetchCountries(`${urlSearch}${searchTerm}`);
+      fetchCountries(`${urlSearch}${searchTerm}${fieldsString}`);
     }
   }, [searchTerm]);
 
   useEffect(() => {
     if (selected) {
-      fetchCountries(`${urlFilter}${selected}`);
+      fetchCountries(`${urlFilter}${selected}${fieldsString}`);
     }
   }, [selected]);
 

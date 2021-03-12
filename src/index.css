@@ -13,18 +13,21 @@ Variables
   --home-font: 0.875rem;
   --details-font: 1rem;
   --radius: 5px;
+  --shadow: 0 4px 8px rgba(116, 105, 105, 0.2);
 }
 
 .light-theme {
   --clr-elements: hsl(0, 0%, 100%);
   --clr-background: hsl(0, 0%, 98%);
   --clr-text: hsl(200, 15%, 8%);
+  --shadow: 0 4px 8px rgba(116, 105, 105, 0.2);
 }
 
 .dark-theme {
   --clr-elements: hsl(209, 23%, 22%);
   --clr-background: hsl(207, 26%, 17%);
   --clr-text: hsl(0, 0%, 100%);
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* 
@@ -38,19 +41,39 @@ Global Styles
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   line-height: 1.3;
   font-family: "Nunito Sans", sans-serif;
   color: var(--clr-text);
 }
 
+#root {
+  position: relative;
+}
+
 /* Header */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: var(--clr-elements);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  z-index: 1000;
+}
+
+@media screen and (max-width: 400px) {
+  header {
+    font-size: 14px;
+  }
 }
 
 .header h3 {
@@ -63,6 +86,7 @@ body {
   background-color: inherit;
   color: inherit;
   border: 0;
+  box-shadow: none;
   cursor: pointer;
 }
 
@@ -79,15 +103,21 @@ input:focus {
 /* Main */
 main {
   background-color: var(--clr-background);
-  min-height: 100vh;
+  margin-top: 10vh;
+  min-height: 90vh;
 }
 #home {
   font-size: var(--home-font);
 }
 #details {
   font-size: var(--details-font);
+  padding: 2rem 1rem;
 }
-
+@media screen and (min-width: 480px) {
+  #details {
+    padding: 2rem 4rem;
+  }
+}
 .input-container {
   display: flex;
   flex-wrap: wrap;
@@ -117,7 +147,7 @@ input {
   min-width: 19rem;
   padding: 1rem;
   padding-left: 3rem;
-  box-shadow: var(--light-shadow);
+  box-shadow: var(--shadow);
   border-radius: var(--radius);
   border: none;
 }
@@ -130,6 +160,7 @@ input {
 /* filter */
 .Dropdown-root {
   position: relative;
+  box-shadow: var(--shadow);
 }
 
 .Dropdown-control {
@@ -172,10 +203,9 @@ input {
 .Dropdown-menu {
   background-color: var(--clr-elements);
   border: 1px solid var(--clr-elements);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow);
   box-sizing: border-box;
   margin-top: 0.25rem;
-
   max-height: 200px;
   overflow-y: auto;
   position: absolute;
@@ -210,10 +240,10 @@ input {
   color: var(--clr-text);
 }
 
-/* .Dropdown-option.is-selected {
-  background-color: #f2f9fc;
-  color: #333;
-} */
+.Dropdown-option.is-selected {
+  background-color: var(--clr-background);
+  /* color: #333; */
+}
 
 .Dropdown-noresults {
   box-sizing: border-box;
@@ -309,7 +339,92 @@ input {
   margin-bottom: 0.5em;
 }
 
-.info .property {
+.property {
   font-weight: var(--normal);
   margin-right: 0.5em;
+}
+/* Button */
+button {
+  background-color: var(--clr-elements);
+  color: var(--clr-text);
+  padding: 0.5rem 1rem;
+  border: none;
+  min-width: 6rem;
+  border-radius: 0.25rem;
+  font: inherit;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* country details */
+@media screen and (min-width: 1120px) {
+  section.info-box {
+    /* padding-left: 4rem; */
+    min-width: 40%;
+  }
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+article {
+  margin-top: 3rem;
+}
+section.flag,
+section.info-box {
+  max-width: 35rem;
+}
+.flag img {
+  width: 100%;
+}
+section.info-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-box h2 {
+  padding-top: 2rem;
+  width: 100%;
+}
+#details .info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.info .sub {
+  align-self: flex-start;
+}
+
+.lead,
+.sub {
+  padding: 1rem 0;
+  min-width: 16rem;
+  max-width: 18rem;
+}
+.info-box p {
+  padding: 0.25rem 0;
+}
+
+.border-countries {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2rem;
+}
+.border-countries button {
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem 0.25rem;
+}
+
+button.back {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

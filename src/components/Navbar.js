@@ -1,12 +1,24 @@
-import { BiMoon } from "react-icons/bi";
+import { BiMoon, BiSun } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ toggleTheme }) => {
+const Navbar = ({ toggleTheme, theme }) => {
   return (
     <header className="header">
-      <h3>Where in the world</h3>
+      <Link to="/">
+        <h3>Where in the world</h3>
+      </Link>
       <button onClick={toggleTheme} className="theme-switch">
-        <BiMoon />
-        <span>Dark Mode</span>
+        {theme === "dark-theme" ? (
+          <>
+            <BiMoon />
+            <span> Dark Mode</span>
+          </>
+        ) : (
+          <>
+            <BiSun />
+            <span> Light Mode</span>
+          </>
+        )}
       </button>
     </header>
   );

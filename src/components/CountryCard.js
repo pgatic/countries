@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { numberWithCommas } from "../utils";
 
 const CountryCard = ({
   flag,
@@ -8,13 +9,9 @@ const CountryCard = ({
   capital,
   alpha3Code,
 }) => {
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
   return (
     <article className="card">
-      <Link to={`/country/:${alpha3Code}`}>
+      <Link to={`/country/${alpha3Code}`}>
         <img src={flag} alt="flag" />
         <div className="info">
           <h2>{name}</h2>
