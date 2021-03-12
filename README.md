@@ -12,3 +12,5 @@ Your users should be able to:
 - Click on a country to see more detailed information on a separate page
 - Click through to the border countries on the detail page
 - Toggle the color scheme between light and dark mode _(optional)_
+
+[View solution](https://pgatic-countries.netlify.app/)
