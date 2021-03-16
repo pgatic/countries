@@ -68,7 +68,7 @@ body {
   justify-content: space-between;
   padding: 1rem;
   z-index: 1000;
-  height: 10vh;
+  height: 8vh;
 }
 
 @media screen and (max-width: 400px) {
@@ -104,21 +104,25 @@ input:focus {
 /* Main */
 main {
   background-color: var(--clr-background);
-  margin-top: 10vh;
-  min-height: 90vh;
+  margin-top: 8vh;
+  min-height: 92vh;
 }
+
 #home {
   font-size: var(--home-font);
 }
+
 #details {
   font-size: var(--details-font);
   padding: 2rem 1rem;
 }
+
 @media screen and (min-width: 480px) {
   #details {
     padding: 2rem 4rem;
   }
 }
+
 .input-container {
   display: flex;
   flex-wrap: wrap;
@@ -131,12 +135,36 @@ main {
   padding-bottom: 0;
 }
 
+@media screen and (min-width: 750px) {
+  button.back {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .form-control {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media screen and (min-width: 1380px) {
+  .form-control {
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+  button.back {
+    margin-left: 7rem;
+  }
+}
+
 .countries {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;
 }
+
 /* Search */
 .input-box {
   position: relative;
@@ -158,6 +186,7 @@ input {
   left: 1rem;
   bottom: 1rem;
 }
+
 /* filter */
 .Dropdown-root {
   position: relative;
@@ -322,12 +351,19 @@ input {
   border-radius: var(--radius);
   background-color: var(--clr-elements);
   overflow: hidden;
-  margin: 2rem;
 }
+
+@media screen and (min-width: 590px){
+  .card {
+    margin: 2rem;
+  }
+}
+
 .card a {
   text-decoration: none;
   color: inherit;
 }
+
 .card img {
   width: 100%;
 }
@@ -335,6 +371,7 @@ input {
 .card .info {
   padding: 1em;
 }
+
 .info h2 {
   font-weight: var(--bold);
   margin-bottom: 0.5em;
@@ -344,6 +381,7 @@ input {
   font-weight: var(--normal);
   margin-right: 0.5em;
 }
+
 /* Button */
 button {
   background-color: var(--clr-elements);
@@ -364,26 +402,30 @@ button:focus {
 /* country details */
 @media screen and (min-width: 1120px) {
   section.info-box {
-    /* padding-left: 4rem; */
     min-width: 40%;
   }
 }
+
 .flex-wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
+
 article {
   margin-top: 3rem;
 }
+
 section.flag,
 section.info-box {
   max-width: 35rem;
 }
+
 .flag img {
   width: 100%;
 }
+
 section.info-box {
   display: flex;
   flex-direction: column;
@@ -393,12 +435,14 @@ section.info-box {
   padding-top: 2rem;
   width: 100%;
 }
+
 #details .info {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
+
 .info .sub {
   align-self: flex-start;
 }
@@ -409,6 +453,7 @@ section.info-box {
   min-width: 16rem;
   max-width: 18rem;
 }
+
 .info-box p {
   padding: 0.25rem 0;
 }
@@ -419,6 +464,7 @@ section.info-box {
   align-items: center;
   margin-top: 2rem;
 }
+
 .border-countries button {
   padding: 0.25rem 0.5rem;
   margin: 0.25rem 0.25rem;
@@ -429,3 +475,4 @@ button.back {
   justify-content: space-around;
   align-items: center;
 }
+
