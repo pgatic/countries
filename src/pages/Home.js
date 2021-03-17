@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import InputWrapper from "../components/InputWrapper.js";
 import Search from "../components/Search.js";
 import Filter from "../components/Filter.js";
 import CountriesList from "../components/CountriesList.js";
@@ -24,19 +25,28 @@ const Home = () => {
     setSelected(option.label);
   };
 
-  const fetchCountries = (url) => {
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setLoading(false);
-          setCountries(result);
-        },
-        (error) => {
-          setLoading(false);
-          setError(error);
-        }
-      );
+  const fetchCountries = async (url) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      // console.log(data);
+      if (data.status === 404) {
+        setError(data.message);
+        setLoading(false);
+        return null;
+      }
+      if (data) {
+        setCountries(data);
+      } else {
+        setCountries([]);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log("error: ", error);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -56,12 +66,12 @@ const Home = () => {
   return (
     <main id="home">
       <section className="input-container">
-        <div className="form-control">
+        <InputWrapper>
           <Search handleInputChange={handleInputChange} />
-        </div>
-        <div className="form-control">
+        </InputWrapper>
+        <InputWrapper>
           <Filter handleSelectChange={handleSelectChange} />
-        </div>
+        </InputWrapper>
       </section>
       <section className="countries">
         <CountriesList countries={countries} loading={loading} error={error} />

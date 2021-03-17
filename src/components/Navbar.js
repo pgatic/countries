@@ -10,13 +10,13 @@ const Navbar = ({ toggleTheme, theme }) => {
       <button onClick={toggleTheme} className="theme-switch">
         {theme === "dark-theme" ? (
           <>
-            <BiMoon />
-            <span> Dark Mode</span>
+            <BiSun />
+            <span> Light Mode</span>
           </>
         ) : (
           <>
-            <BiSun />
-            <span> Light Mode</span>
+            <BiMoon />
+            <span> Dark Mode</span>
           </>
         )}
       </button>

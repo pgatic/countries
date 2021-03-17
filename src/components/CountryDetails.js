@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { Link } from "react-router-dom";
+import InfoParagraph from "../components/InfoParagraph";
 import Button from "../components/Button";
 import { numberWithCommas } from "../utils";
 
@@ -94,6 +95,7 @@ const CountryDetails = ({ code }) => {
       languages,
       borders,
     } = country;
+
     return (
       <article className="flex-wrap">
         <section className="flag">
@@ -103,40 +105,26 @@ const CountryDetails = ({ code }) => {
           <h2>{name}</h2>
           <section className="info">
             <section className="lead">
-              <p>
-                <span className="property">Native Name:</span>
-                {nativeName}
-              </p>
-              <p>
-                <span className="property">Population:</span>
+              <InfoParagraph label="Native Name">{nativeName}</InfoParagraph>
+              <InfoParagraph label="Population">
                 {numberWithCommas(population)}
-              </p>
-              <p>
-                <span className="property">Region:</span>
-                {region}
-              </p>
-              <p>
-                <span className="property">Sub Region:</span>
-                {subregion}
-              </p>
-              <p>
-                <span className="property">Capital:</span>
-                {capital}
-              </p>
+              </InfoParagraph>
+              <InfoParagraph label="Region">{region}</InfoParagraph>
+              <InfoParagraph label="Sub Region">{subregion}</InfoParagraph>
+              <InfoParagraph label="Capital">{capital}</InfoParagraph>
             </section>
             <section className="sub">
-              <p>
-                <span className="property">Top Level Domain:</span>
+              <InfoParagraph label="Top Level Domain">
                 {topLevelDomain}
-              </p>
-              <p>
-                <span className="property">Currencies:</span>
-                {currencies[0].name}
-              </p>
-              <p>
-                <span className="property">Languages:</span>
+              </InfoParagraph>
+              <InfoParagraph label="Currencies">
+                {currencies.length > 1
+                  ? currencies.map((currency) => currency.name).join(", ")
+                  : currencies[0].name}
+              </InfoParagraph>
+              <InfoParagraph label="Languages">
                 {languages.map((lang) => lang.name).join(", ")}
-              </p>
+              </InfoParagraph>
             </section>
           </section>
           <section className="border-countries">
